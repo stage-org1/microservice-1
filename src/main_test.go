@@ -6,6 +6,7 @@ import (
 	"testing"
 )
 
+
 func TestGreet(t *testing.T) {
 	req, err := http.NewRequest("GET", "/greet", nil) //new get request to /greet with no body
 	if err != nil {
@@ -26,4 +27,9 @@ func TestGreet(t *testing.T) {
 	if rr.Body.String() != expected {
 		t.Errorf("got a wrong response, expected %v, got %v", expected, rr.Body.String())
 	}
+}
+
+
+func TestFail(t *testing.T) {
+	t.Fail()
 }
