@@ -1,7 +1,0 @@
-=== RUN   TestGreet
---- PASS: TestGreet (0.00s)
-=== RUN   TestFail
---- FAIL: TestFail (0.00s)
-FAIL
-exit status 1
-FAIL	_/Users/beppevanrolleghem/git/stage/microservice-1/src	0.083s
