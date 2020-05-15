@@ -9,6 +9,7 @@ import (
 func main() {
 	http.HandleFunc("/greet", greet)
 	http.HandleFunc("/unstableGreet", unstableGreet)
+	http.ListenAndServe(":80", nil)
 }
 
 func greet(w http.ResponseWriter, r *http.Request) {
