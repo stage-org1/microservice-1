@@ -49,7 +49,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: IMAEG-NAME
+    app: IMAGE-NAME
     version: VERSION
   ports:
   - name: http
