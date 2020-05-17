@@ -8,13 +8,13 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: IMAGE-NAME
-      version: VERSION
+      app: "IMAGE-NAME"
+      version: "VERSION"
   template:
     metadata:
       labels:
-        app: IMAGE-NAME
-        version: VERSION
+        app: "IMAGE-NAME"
+        version: "VERSION"
     spec:
       containers:
         - name: main
@@ -31,7 +31,7 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: IMAGE-NAME
+    app: "IMAGE-NAME"
   ports:
     - name: http
       protocol: TCP
@@ -49,8 +49,8 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: IMAGE-NAME
-    version: VERSION
+    app: "IMAGE-NAME"
+    version: "VERSION"
   ports:
   - name: http
     protocol: TCP
