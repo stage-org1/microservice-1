@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stage-org1
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: IMAGE-NAME-VERSION
+  namespace: stage-org1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: IMAGE-NAME
+      version: v-VERSION
+  template:
+    metadata:
+      labels:
+        app: IMAGE-NAME
+        version: v-VERSION
+    spec:
+      containers:
+        - name: main
+          image: beppev/IMAGE-NAME:VERSION
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 80
+            - containerPort: 443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: IMAGE-NAME-service
+  namespace: stage-org1
+spec:
+  selector:
+    app: IMAGE-NAME
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: IMAGE-NAME-VERSION-service
+  namespace: stage-org1
+spec:
+  selector:
+    app: IMAGE-NAME
+    version: v-VERSION
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 80
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
