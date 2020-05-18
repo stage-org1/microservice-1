@@ -9,9 +9,9 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/greet", greet)
-	http.HandleFunc("/unstableGreet", unstableGreet)
-	http.HandleFunc("/", doRequest)
+	http.HandleFunc("/microservice1/greet", greet)
+	http.HandleFunc("/microservice1/unstableGreet", unstableGreet)
+	http.HandleFunc("/microservice1/", doRequest)
 	err:= http.ListenAndServe(":80", nil)
 	if err != nil {
 		os.Exit(1)
