@@ -14,6 +14,7 @@ spec:
     matchLabels:
       app: IMAGE-NAME
       version: v-VERSION
+      deploy-type: DEPLOY-TYPE
   template:
     metadata:
       labels:
