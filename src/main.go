@@ -19,7 +19,7 @@ func main() {
 }
 
 func doRequest(w http.ResponseWriter, r *http.Request) {
-	resp, err := http.Get("http://microservice-2")
+	resp, err := http.Get("http://microservice-2-vservice")
 	if (err == nil) {
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
