@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: expose-server-gateway
+  namespace: {{ .Values.namespace.name }}
+  labels:
+    app: {{ .Values.image.name }}
+    version: {{ .Values.image.version }}
+spec:
+ selector:
+   istio: ingressgateway
+ servers:
+   - port:
+       number: 80
+       name: http
+       protocol: HTTP
+     hosts:
+       - "*"
