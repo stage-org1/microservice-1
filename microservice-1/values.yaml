@@ -2,8 +2,8 @@ namespace:
   name: stage-org1
 
 image:
-  name: IMAGE-NAME
-  version: VERSION
+  name: REPO-NAME
+  version: REPO-BRANCH:latest
 
 repo:
   name: REPO-NAME
