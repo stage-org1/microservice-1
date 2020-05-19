@@ -7,13 +7,13 @@ image:
 
 repo:
   name: REPO-NAME
-  branch: 
+  branch: REPO-BRANCH
 
 deployment:
   replicas: 1
   labels:
     app: IMAGE-NAME
-    version: VERSION
+    version: vVERSION
     deployType: DEPLOY-TYPE
     repoName: REPO-NAME
     repoBranch: REPO-BRANCH
