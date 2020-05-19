@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespace.name }}
   labels:
     app: {{ .Values.image.name }}
-    version: {{ .Values.image.version }}
+    version: {{ .Values.deployment.labels.version }}
 spec:
  selector:
    istio: ingressgateway
