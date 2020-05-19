@@ -13,7 +13,7 @@ deployment:
   replicas: 1
   labels:
     app: REPO-NAME
-    version: REPO-BRANCH:LATEST
+    version: VERSION
     deployType: DEPLOY-TYPE
     repoName: REPO-NAME
     repoBranch: REPO-BRANCH
