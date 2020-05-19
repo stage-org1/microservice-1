@@ -3,7 +3,7 @@ namespace:
 
 image:
   name: REPO-NAME
-  version: REPO-BRANCH:latest
+  version: VERSION
 
 repo:
   name: REPO-NAME
@@ -12,10 +12,10 @@ repo:
 deployment:
   replicas: 1
   labels:
-    app: IMAGE-NAME
-    version: vVERSION
+    app: REPO-NAME
+    version: REPO-BRANCH:LATEST
     deployType: DEPLOY-TYPE
     repoName: REPO-NAME
     repoBranch: REPO-BRANCH
-  image: beppev/IMAGE-NAME:VERSION
+  image: beppev/REPO-NAME:VERSION
   imagePullPolicy: "Always"
