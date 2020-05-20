@@ -2,20 +2,20 @@ namespace:
   name: stage-org1
 
 image:
-  name: REPO-NAME
-  version: VERSION
+  name: microservice-1
+  version: istio-configuratie-latest
 
 repo:
-  name: REPO-NAME
-  branch: REPO-BRANCH
+  name: microservice-1
+  branch: istio-configuratie 
 
 deployment:
   replicas: 1
   labels:
-    app: REPO-NAME
-    version: VERSION
-    deployType: DEPLOY-TYPE
-    repoName: REPO-NAME
-    repoBranch: REPO-BRANCH
-  image: beppev/REPO-NAME:VERSION
+    app: microservice-1
+    version: istio-configuratie-latest 
+    deployType: staging
+    repoName: microservice-1
+    repoBranch: istio-configuratie
+  image: beppev/microservice-1:istio-configuratie-latest
   imagePullPolicy: "Always"

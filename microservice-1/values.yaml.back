@@ -1,0 +1,21 @@
+namespace:
+  name: stage-org1
+
+image:
+  name: REPO-NAME
+  version: VERSION
+
+repo:
+  name: REPO-NAME
+  branch: REPO-BRANCH
+
+deployment:
+  replicas: 1
+  labels:
+    app: REPO-NAME
+    version: VERSION
+    deployType: DEPLOY-TYPE
+    repoName: REPO-NAME
+    repoBranch: REPO-BRANCH
+  image: beppev/REPO-NAME:VERSION
+  imagePullPolicy: "Always"
