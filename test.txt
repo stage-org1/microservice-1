@@ -6,26 +6,26 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: IMAGE-NAME-VERSION
+  name: imagenameke-versioneke
   namespace: stage-org1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: IMAGE-NAME
-      version: v-VERSION
-      deploy-type: DEPLOY-TYPE
-      repo-name: REPO-NAME
-      repo-branch: REPO-BRANCH
+      app: imagenameke
+      version: v-versioneke
+      deploy-type: deploytypeke
+      repo-name: reponameke
+      repo-branch: repobranchke
   template:
     metadata:
       labels:
-        app: IMAGE-NAME
-        version: v-VERSION
+        app: imagenameke
+        version: v-versioneke
     spec:
       containers:
         - name: main
-          image: beppev/IMAGE-NAME:VERSION
+          image: beppev/imagenameke:versioneke
           imagePullPolicy: "Always"
           ports:
             - containerPort: 80
@@ -34,11 +34,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: REPO-NAME-service
+  name: reponameke-service
   namespace: stage-org1
 spec:
   selector:
-    repo-name: REPO-NAME
+    repo-name: reponameke
   ports:
     - name: http
       protocol: TCP
@@ -52,12 +52,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: REPO-NAME-REPO-BRANCH-service
+  name: reponameke-repobranchke-service
   namespace: stage-org1
 spec:
   selector:
-    repo-name: REPO-NAME
-    repo-branch: REPO-BRANCH
+    repo-name: reponameke
+    repo-branch: repobranchke
   ports:
     - name: http
       protocol: TCP
@@ -71,11 +71,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: IMAGE-NAME-service
+  name: imagenameke-service
   namespace: stage-org1
 spec:
   selector:
-    app: IMAGE-NAME
+    app: imagenameke
   ports:
     - name: http
       protocol: TCP
@@ -89,12 +89,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: IMAGE-NAME-VERSION-service
+  name: imagenameke-versioneke-service
   namespace: stage-org1
 spec:
   selector:
-    app: IMAGE-NAME
-    version: v-VERSION
+    app: imagenameke
+    version: v-versioneke
   ports:
   - name: http
     protocol: TCP
@@ -111,8 +111,8 @@ metadata:
  name: expose-server-gateway
  namespace: stage-org1
  labels:
-   app: IMAGE-NAME
-   version: v-VERSION
+   app: imagenameke
+   version: v-versioneke
 spec:
  selector:
    istio: ingressgateway
@@ -127,10 +127,10 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
- name: REPO-NAME-vservice
+ name: reponameke-vservice
  namespace: stage-org1
  labels:
-   app: IMAGE-NAME
+   app: imagenameke
 spec:
  hosts:
    - "*"
@@ -139,9 +139,9 @@ spec:
  http:
    - match:
      - uri:
-         prefix: /REPO-NAME
+         prefix: /reponameke
      route:
        - destination:
            port:
              number: 80
-           host: REPO-NAME-service
+           host: reponameke-service

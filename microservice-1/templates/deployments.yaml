@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.name }}-{{ .Values.image.version }}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  replicas: {{ .Values.deployment.replicas}}
+  selector:
+    matchLabels:
+      app: {{ .Values.deployment.labels.app }}
+      version: {{ .Values.deployment.labels.version }}
+      deployType: {{ .Values.deployment.labels.deployType }}
+      repoName: {{ .Values.deployment.labels.repoName }}
+      repoBranch: {{ .Values.deployment.labels.repoBranch }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.deployment.labels.app }}
+        version: {{ .Values.deployment.labels.version }}
+        deployType: {{ .Values.deployment.labels.deployType }}
+        repoName: {{ .Values.deployment.labels.repoName }}
+        repoBranch: {{ .Values.deployment.labels.repoBranch }}
+    spec:
+      containers:
+        - name: main
+          image: {{ .Values.deployment.image}}
+          imagePullPolicy: {{ .Values.deployment.imagePullPolicy }}
+          ports:
+            - containerPort: 80
+            - containerPort: 443
