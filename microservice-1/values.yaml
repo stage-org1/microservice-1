@@ -1,0 +1,9 @@
+image:
+  name: IMAGE-NAME
+  tag: VERSION
+
+
+labels:
+  image: IMAGE-NAME:VERSION
+  name: IMAGE-NAME
+  version: VERSION
