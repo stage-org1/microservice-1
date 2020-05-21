@@ -9,26 +9,26 @@ spec:
   gateways:
     - "stage-org1-gateway"
   http:
-    - match:
-      - headers:
-          version:
-            exact: {{ .Values.image.tag }}
-        uri:
-          prefix: "/{{.Values.image.name}}"
-        ignoreUriCase: true
-      route:
-        - destination:
-            host: {{ .Values.image.name }}-service-{{ .Values.image.tag }}
-    - match:
-      - headers:
-          version:
-            exact: latest
-        uri:
-          prefix: "/{{.Values.image.name}}"
-        ignoreUriCase: true
-      route:
-        - destination:
-            host: {{ .Values.image.name }}-service-latest
+    # - match:
+    #   - headers:
+    #       version:
+    #         exact: {{ .Values.image.tag }}
+    #     uri:
+    #       prefix: "/{{.Values.image.name}}"
+    #     ignoreUriCase: true
+    #   route:
+    #     - destination:
+    #         host: {{ .Values.image.name }}-service-{{ .Values.image.tag }}
+    # - match:
+    #   - headers:
+    #       version:
+    #         exact: latest
+    #     uri:
+    #       prefix: "/{{.Values.image.name}}"
+    #     ignoreUriCase: true
+    #   route:
+    #     - destination:
+    #         host: {{ .Values.image.name }}-service-latest
     - match:
       - uri:
           prefix: "/{{.Values.image.name}}"
