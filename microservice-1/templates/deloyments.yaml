@@ -20,10 +20,11 @@ spec:
         version: {{ .Values.labels.version }}
     spec:
       containers:
-      - name: {{ .Values.image.name}}
-        image: {{ .Values.image.name }}:{{ .Values.image.version }}
-        ports:
-        - containerPort: 80
+        - name: {{ .Values.image.name }}
+          image: {{ .Values.image.fullName }}
+          imagePullPolicy: "Always"
+          ports:
+          - containerPort: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -46,7 +47,8 @@ spec:
         version: latest
     spec:
       containers:
-      - name: {{ .Values.image.name}}
-        image: {{ .Values.image.name }}:latest
-        ports:
-        - containerPort: 80
+        - name: {{ .Values.image.name }}
+          image: {{ .Values.image.masterName }}
+          imagePullPolicy: "Always"
+          ports:
+          - containerPort: 80

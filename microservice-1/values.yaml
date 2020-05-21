@@ -1,9 +1,10 @@
 image:
   name: IMAGE-NAME
   tag: VERSION
+  fullName: IMAGE-NAME:VERSION
+  masterName: IMAGE-NAME:latest
 
 
 labels:
-  image: IMAGE-NAME:VERSION
   name: IMAGE-NAME
   version: VERSION
