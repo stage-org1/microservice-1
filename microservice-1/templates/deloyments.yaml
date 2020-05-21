@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.name }}-deployment-{{ .Values.image.tag}}
+  namespace: stage-org1
+  labels:
+    name: {{ .Values.labels.name }}
+    version: {{ .Values.labels.version }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ .Values.labels.name }}
+      version: {{ .Values.labels.version }}
+  template:
+    metadata:
+      labels:
+        name: {{ .Values.labels.name }}
+        version: {{ .Values.labels.version }}
+    spec:
+      containers:
+        - name: {{ .Values.image.name }}
+          image: {{ .Values.image.fullName }}
+          imagePullPolicy: "Always"
+          ports:
+          - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.image.name }}-deployment-latest
+  namespace: stage-org1
+  labels:
+    name: {{ .Values.labels.name }}
+    version: latest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{ .Values.labels.name }}
+      version: latest
+  template:
+    metadata:
+      labels:
+        name: {{ .Values.labels.name }}
+        version: latest
+    spec:
+      containers:
+        - name: {{ .Values.image.name }}
+          image: {{ .Values.image.masterName }}
+          imagePullPolicy: "Always"
+          ports:
+          - containerPort: 80
