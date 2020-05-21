@@ -36,3 +36,42 @@ spec:
       route:
         - destination:
             host: {{ .Values.image.name }}-service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.image.name }}-vservice
+  namespace: stage-org1
+spec:
+  hosts:
+    - "istio-ingress.llocal.host"
+  gateways:
+    - "stage-org1-gateway"
+  http:
+    - match:
+      - headers:
+          version:
+            exact: {{ .Values.image.tag }}
+        uri:
+          prefix: "/{{.Values.image.name}}/greet"
+        ignoreUriCase: true
+      route:
+        - destination:
+            host: {{ .Values.image.name }}-service-{{ .Values.image.tag }}/greet
+    - match:
+      - headers:
+          version:
+            exact: latest
+        uri:
+          prefix: "/{{.Values.image.name}}/greet"
+        ignoreUriCase: true
+      route:
+        - destination:
+            host: {{ .Values.image.name }}-service-latest/greet
+    - match:
+      - uri:
+          prefix: "/{{.Values.image.name}}/greet"
+        irnogeUriCase: true
+      route:
+        - destination:
+            host: {{ .Values.image.name }}-service/greet
