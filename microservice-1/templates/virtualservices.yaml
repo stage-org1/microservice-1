@@ -12,13 +12,13 @@ spec:
     - match:
       - headers:
           version:
-            exact: {{ .Values.image.version }}
+            exact: {{ .Values.image.tag }}
         uri:
           prefix: "/{{.Values.image.name}}"
         ignoreUriCase: true
       route:
         - destination:
-            host: {{ .Values.image.name }}-service-{{ .Values.image.version }}
+            host: {{ .Values.image.name }}-service-{{ .Values.image.tag }}
     - match:
       - headers:
           version:

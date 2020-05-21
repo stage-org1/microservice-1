@@ -29,12 +29,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.image.name }}-service-{{ .Values.image.version }}
+  name: {{ .Values.image.name }}-service-{{ .Values.image.tag }}
   namespace: stage-org1
 spec:
   selector:
     name: {{ .Values.image.name }}
-    version: {{ .Values.image.version }}
+    version: {{ .Values.image.tag }}
   ports:
     - protocol: TCP
       port: 80

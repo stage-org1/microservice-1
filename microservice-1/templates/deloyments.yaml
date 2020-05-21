@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.name }}-deployment-{{ .Values.image.version}}
+  name: {{ .Values.image.name }}-deployment-{{ .Values.image.tag}}
   namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
-    version: {{ .Values.labels.version }}
+    version: {{ .Values.labels.tag }}
 spec:
   replicas: 3
   selector:
     matchLabels:
       name: {{ .Values.labels.name }}
-      version: {{ .Values.labels.version }}
+      version: {{ .Values.labels.tag }}
   template:
     metadata:
       labels:
         name: {{ .Values.labels.name }}
-        version: {{ .Values.labels.version }}
+        version: {{ .Values.labels.tag }}
     spec:
       containers:
         - name: {{ .Values.image.name }}
