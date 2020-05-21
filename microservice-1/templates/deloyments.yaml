@@ -33,7 +33,7 @@ metadata:
   namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
-    version: latest
+    version: {{ .Values.image.mtag }}
 spec:
   replicas: 1
   selector:

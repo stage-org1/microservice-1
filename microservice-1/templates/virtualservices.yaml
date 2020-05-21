@@ -14,25 +14,100 @@ spec:
           version:
             exact: {{ .Values.image.tag }}
         uri:
-          prefix: "/{{.Values.image.name}}"
+          prefix: "/{{.Values.image.name}}/"
         ignoreUriCase: true
       route:
         - destination:
-            host: {{ .Values.image.name }}-service-{{ .Values.image.tag }}
+            host: {{ .Values.image.name }}-service
+            subset: experimental
+          headers:
+            request:
+              add:
+                subset: "experimental"
     - match:
       - headers:
           version:
-            exact: latest
+            exact: experimental
         uri:
-          prefix: "/{{.Values.image.name}}"
+          prefix: "/{{.Values.image.name}}/"
         ignoreUriCase: true
       route:
         - destination:
-            host: {{ .Values.image.name }}-service-latest
+            host: {{ .Values.image.name }}-service
+            subset: master
+          headers:
+            request:
+              add:
+                subset: "master"
     - match:
       - uri:
-          prefix: "/{{.Values.image.name}}"
+          prefix: "/{{.Values.image.name}}/"
         irnogeUriCase: true
       route:
         - destination:
             host: {{ .Values.image.name }}-service
+            subset: master
+          weight: 80
+          headers:
+            request:
+              add:
+                subset: "master"
+        - destination:
+            host: {{ .Values.image.name }}-service
+            subset: experimental
+          weight: 20
+          headers:
+            request:
+              add:
+                subset: "experimental"
+    - match:
+      - headers:
+          version:
+            exact: {{ .Values.image.tag }}
+        uri:
+          prefix: "/{{.Values.image.name}}/greet"
+        ignoreUriCase: true
+      route:
+        - destination:
+            host: {{ .Values.image.name }}-service
+            subset: experimental
+          headers:
+            request:
+              add:
+                subset: "experimental"
+    - match:
+      - headers:
+          version:
+            exact: experimental
+        uri:
+          prefix: "/{{.Values.image.name}}/greet"
+        ignoreUriCase: true
+      route:
+        - destination:
+            host: {{ .Values.image.name }}-service
+            subset: master
+          headers:
+            request:
+              add:
+                subset: "master"
+    - match:
+      - uri:
+          prefix: "/{{.Values.image.name}}/greet"
+        irnogeUriCase: true
+      route:
+        - destination:
+            host: {{ .Values.image.name }}-service
+            subset: master
+          weight: 80
+          headers:
+            request:
+              add:
+                subset: "master"
+        - destination:
+            host: {{ .Values.image.name }}-service
+            subset: experimental
+          weight: 20
+          headers:
+            request:
+              add:
+                subset: "experimental"
