@@ -14,7 +14,7 @@ spec:
           version:
             exact: {{ .Values.image.tag }}
         uri:
-          prefix: "/{{.Values.image.name}}"
+          prefix: "/{{.Values.image.name}}/*"
         ignoreUriCase: true
       route:
         - destination:
@@ -24,14 +24,14 @@ spec:
           version:
             exact: latest
         uri:
-          prefix: "/{{.Values.image.name}}"
+          prefix: "/{{.Values.image.name}}/*"
         ignoreUriCase: true
       route:
         - destination:
             host: {{ .Values.image.name }}-service-latest
     - match:
       - uri:
-          prefix: "/{{.Values.image.name}}"
+          prefix: "/{{.Values.image.name}}/*"
         irnogeUriCase: true
       route:
         - destination:
