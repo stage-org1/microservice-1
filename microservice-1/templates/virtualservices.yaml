@@ -39,8 +39,8 @@ spec:
         - destination:
             host: {{ .Values.image.name }}-service
             subset: master
-            weight: 80
+          weight: 80
         - destination:
             host: {{ .Values.image.name }}-service
             subset: experimental
-            weight: 20
+          weight: 20
