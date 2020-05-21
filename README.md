@@ -1,3 +1,3 @@
 # microservice-1
 
-manifest moet nog aangepast worden voor integratie istio
+pipeline tagged images verkeerd, dus pushed verkeerde images in totaal. dit moet gefixed worden

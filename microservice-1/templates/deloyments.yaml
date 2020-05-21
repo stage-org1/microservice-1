@@ -8,7 +8,7 @@ metadata:
     name: {{ .Values.labels.name }}
     version: {{ .Values.labels.version }}
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.labels.name }}
@@ -35,7 +35,7 @@ metadata:
     name: {{ .Values.labels.name }}
     version: latest
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.labels.name }}
