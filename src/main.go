@@ -26,9 +26,9 @@ func doRequest(w http.ResponseWriter, r *http.Request) {
 		if (err == nil) {
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		}
-	} else {
-		http.Error(w, "an internal error happened", http.StatusInternalServerError)
 	}
+	http.Error(w, err.Error(), http.StatusInternalServerError)
+
 }
 
 
