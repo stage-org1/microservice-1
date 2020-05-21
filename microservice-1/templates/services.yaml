@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.image.name }}-service
+  namespace: stage-org1
 spec:
   selector:
     name: {{ .Values.image.name }}
@@ -15,6 +16,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.image.name}}-service-latest
+  namespace: stage-org1
 spec:
   selector:
     name: {{ .Values.image.name }}
@@ -28,6 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ .Values.image.name }}-service-{{ .Values.image.version }}
+  namespace: stage-org1
 spec:
   selector:
     name: {{ .Values.image.name }}

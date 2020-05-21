@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.image.name }}-deployment-{{ .Values.image.version}}
+  namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
     version: {{ .Values.labels.version }}
@@ -28,6 +29,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Values.image.name }}-deployment-latest
+  namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
     version: latest
