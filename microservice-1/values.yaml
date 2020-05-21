@@ -1,8 +1,8 @@
 image:
   name: IMAGE-NAME
   tag: VERSION
-  fullName: IMAGE-NAME:VERSION
-  masterName: IMAGE-NAME:latest
+  fullName: beppev/IMAGE-NAME:VERSION
+  masterName: beppev/IMAGE-NAME:latest
 
 
 labels:
