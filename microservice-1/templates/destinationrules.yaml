@@ -1,0 +1,14 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: {{ .Values.image.name }}-destination
+  namespace: stage-org1
+spec:
+  host: {{ .Values.image.name }}-service
+  subsets:
+    - name: master
+      labels:
+        version: {{ .Values.image.mtag }}
+    - name: experimental
+      labels:
+        version: {{ .Values.labels.version }}

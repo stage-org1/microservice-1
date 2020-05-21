@@ -1,6 +1,7 @@
 image:
   name: IMAGE-NAME
   tag: vVERSION
+  mtag: vMASTER
   fullName: beppev/IMAGE-NAME:VERSION
   masterName: beppev/IMAGE-NAME:MASTER
 
