@@ -8,7 +8,7 @@ spec:
   subsets:
     - name: master
       labels:
-        version: {{ .Values.image.mtag }}
+        version: master
     - name: experimental
       labels:
-        version: {{ .Values.labels.version }}
+        version: experimental

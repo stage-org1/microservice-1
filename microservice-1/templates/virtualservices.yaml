@@ -47,7 +47,7 @@ spec:
         - destination:
             host: {{ .Values.image.name }}-service
             subset: master
-          weight: 80
+          weight: {{ .Values.weight.master }}
           headers:
             request:
               add:
@@ -55,7 +55,7 @@ spec:
         - destination:
             host: {{ .Values.image.name }}-service
             subset: experimental
-          weight: 20
+          weight: {{ .Values.weight.experimental }}
           headers:
             request:
               add:
@@ -98,7 +98,7 @@ spec:
         - destination:
             host: {{ .Values.image.name }}-service
             subset: master
-          weight: 80
+          weight: {{ .Values.weight.master }}
           headers:
             request:
               add:
@@ -106,7 +106,7 @@ spec:
         - destination:
             host: {{ .Values.image.name }}-service
             subset: experimental
-          weight: 20
+          weight: {{ .Values.weight.experimental }}
           headers:
             request:
               add:
