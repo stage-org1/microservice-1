@@ -6,8 +6,8 @@ image:
   masterName: beppev/IMAGE-NAME:MASTER
 
 weight:
-  master: 100
-  experimental: 0
+  master: 90
+  experimental: 10
 
 
 labels:
