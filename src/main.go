@@ -11,7 +11,7 @@ import (
 func main() {
 	http.HandleFunc("/greet", greet)
 	http.HandleFunc("/unstableGreet", unstableGreet)
-	http.HandleFunc("/doRequest", doRequest)
+	http.HandleFunc("/", doRequest)
 	err:= http.ListenAndServe(":80", nil)
 	if err != nil {
 		os.Exit(1)
@@ -19,6 +19,7 @@ func main() {
 }
 
 func doRequest(w http.ResponseWriter, r *http.Request) {
+	fmt.Println("doRequest method called")
 	resp, err := http.Get("http://microservice-2-vservice")
 	if (err == nil) {
 		defer resp.Body.Close()
@@ -38,7 +39,6 @@ func greet(w http.ResponseWriter, r *http.Request) {
 
 func unstableGreet(w http.ResponseWriter, r *http.Request) {
 	chance := rand.Intn(100)
-
 	if chance < 75 {
 		fmt.Fprintf(w, "hello world")
 	} else {
