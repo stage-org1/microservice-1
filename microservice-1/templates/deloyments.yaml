@@ -5,18 +5,18 @@ metadata:
   name: {{ .Values.image.name }}-deployment-experimental
   namespace: stage-org1
   labels:
-    name: {{ .Values.labels.name }}
+    name: {{ .Values.image.name }}
     version: experimental
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.labels.name }}
+      name: {{ .Values.image.name }}
       version: experimental
   template:
     metadata:
       labels:
-        name: {{ .Values.labels.name }}
+        name: {{ .Values.image.name }}
         version: experimental
     spec:
       containers:
@@ -32,18 +32,18 @@ metadata:
   name: {{ .Values.image.name }}-deployment-master
   namespace: stage-org1
   labels:
-    name: {{ .Values.labels.name }}
+    name: {{ .Values.image.name }}
     version: master
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.labels.name }}
+      name: {{ .Values.image.name }}
       version: master
   template:
     metadata:
       labels:
-        name: {{ .Values.labels.name }}
+        name: {{ .Values.image.name }}
         version: master
     spec:
       containers:
