@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.name }}-deployment-{{ .Values.image.tag}}
+  name: {{ .Values.image.name }}-deployment-experimental
   namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: {{ .Values.image.fullName }}
+          image: {{ .Values.image.experimental }}
           imagePullPolicy: "Always"
           ports:
           - containerPort: 80
@@ -29,7 +29,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.name }}-deployment-latest
+  name: {{ .Values.image.name }}-deployment-master
   namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: {{ .Values.image.masterName }}
+          image: {{ .Values.image.master }}
           imagePullPolicy: "Always"
           ports:
           - containerPort: 80

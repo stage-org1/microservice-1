@@ -12,7 +12,7 @@ spec:
     - match:
       - headers:
           version:
-            exact: {{ .Values.image.tag }}
+            exact: experimental
         uri:
           prefix: "/{{.Values.image.name}}/"
         ignoreUriCase: true
@@ -42,57 +42,6 @@ spec:
     - match:
       - uri:
           prefix: "/{{.Values.image.name}}/"
-        irnogeUriCase: true
-      route:
-        - destination:
-            host: {{ .Values.image.name }}-service
-            subset: master
-          weight: {{ .Values.weight.master }}
-          headers:
-            request:
-              add:
-                subset: "master"
-        - destination:
-            host: {{ .Values.image.name }}-service
-            subset: experimental
-          weight: {{ .Values.weight.experimental }}
-          headers:
-            request:
-              add:
-                subset: "experimental"
-    - match:
-      - headers:
-          version:
-            exact: {{ .Values.image.tag }}
-        uri:
-          prefix: "/{{.Values.image.name}}/greet"
-        ignoreUriCase: true
-      route:
-        - destination:
-            host: {{ .Values.image.name }}-service
-            subset: experimental
-          headers:
-            request:
-              add:
-                subset: "experimental"
-    - match:
-      - headers:
-          version:
-            exact: experimental
-        uri:
-          prefix: "/{{.Values.image.name}}/greet"
-        ignoreUriCase: true
-      route:
-        - destination:
-            host: {{ .Values.image.name }}-service
-            subset: master
-          headers:
-            request:
-              add:
-                subset: "master"
-    - match:
-      - uri:
-          prefix: "/{{.Values.image.name}}/greet"
         irnogeUriCase: true
       route:
         - destination:
