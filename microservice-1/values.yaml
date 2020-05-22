@@ -3,6 +3,7 @@ weight:
   experimental: 0
 
 image:
+  name: microservice-1
   master: beppev/IMAGE-NAME:MASTER
   experimental: beppev/IMAGE-NAME:VERSION
 
