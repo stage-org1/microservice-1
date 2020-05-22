@@ -11,7 +11,7 @@ import (
 func main() {
 	http.HandleFunc("/greet", greet)
 	http.HandleFunc("/unstableGreet", unstableGreet)
-	http.HandleFunc("/", doRequest)
+	http.HandleFunc("/doRequest", doRequest)
 	err:= http.ListenAndServe(":80", nil)
 	if err != nil {
 		os.Exit(1)
