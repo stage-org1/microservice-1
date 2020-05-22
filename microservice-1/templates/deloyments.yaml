@@ -6,18 +6,18 @@ metadata:
   namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
-    version: {{ .Values.labels.version }}
+    version: experimental
 spec:
   replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.labels.name }}
-      version: {{ .Values.labels.version }}
+      version: experimental
   template:
     metadata:
       labels:
         name: {{ .Values.labels.name }}
-        version: {{ .Values.labels.version }}
+        version: experimental
     spec:
       containers:
         - name: {{ .Values.image.name }}
@@ -33,18 +33,18 @@ metadata:
   namespace: stage-org1
   labels:
     name: {{ .Values.labels.name }}
-    version: {{ .Values.image.mtag }}
+    version: master
 spec:
   replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.labels.name }}
-      version: latest
+      version: master
   template:
     metadata:
       labels:
         name: {{ .Values.labels.name }}
-        version: latest
+        version: master
     spec:
       containers:
         - name: {{ .Values.image.name }}

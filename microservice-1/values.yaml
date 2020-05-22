@@ -5,6 +5,10 @@ image:
   fullName: beppev/IMAGE-NAME:VERSION
   masterName: beppev/IMAGE-NAME:MASTER
 
+weight:
+  master: 100
+  experimental: 0
+
 
 labels:
   name: IMAGE-NAME
