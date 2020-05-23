@@ -29,7 +29,7 @@ func doRequest(w http.ResponseWriter, r *http.Request) {
 		body, err := ioutil.ReadAll(resp.Body)
 		fmt.Println("readall happened")
 		if (err == nil) {
-			fmt.Println("request was success")
+			fmt.Println("request was success," + string(body))
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		} else {
 			fmt.Println("body read error")
