@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -16,42 +16,23 @@ func main() {
 }
 
 func doRequest(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("doRequest method called")
-	fmt.Println("currently we have a request from subset: ")
 	subset := r.Header.Get("subset")
-	fmt.Println(subset)
 	w.Header().Set("subset", subset)
-	resp, err := http.Get("http://microservice-2-service")
+	client := http.Client{
+		Timeout: 50 * time.Millisecond, // 50 millisecond timeout
+	}
+	resp, err := client.Get("http://microservice-2-service")
 	if (err == nil && resp.Body != nil) {
-		fmt.Println("err == nill en body != nil")
 		defer resp.Body.Close()
-		fmt.Println("resp body close finished")
 		body, err := ioutil.ReadAll(resp.Body)
-		fmt.Println("readall happened")
 		if (err == nil) {
-			fmt.Println("request was success," + string(body))
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		} else {
-			fmt.Println("body read error")
-			http.Error(w, err.Error() + " happened, rip", http.StatusInternalServerError)
+			http.Error(w, "an error occured:" + err.Error(), http.StatusInternalServerError)
 		}
 	} else {
-		fmt.Println("err != nil")
-		http.Error(w, err.Error() + " happened, rip", http.StatusInternalServerError)
+		http.Error(w, "an error occured:" + err.Error() , http.StatusInternalServerError)
 	} 
 
 }
 
-
-func greet(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello world")
-}
-
-func unstableGreet(w http.ResponseWriter, r *http.Request) {
-	chance := rand.Intn(100)
-	if chance < 75 {
-		fmt.Fprintf(w, "hello world")
-	} else {
-		fmt.Fprintf(w, "dlrow olleh")
-	}
-}
