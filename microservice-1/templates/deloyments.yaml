@@ -2,26 +2,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.name }}-deployment-{{ .Values.image.tag}}
+  name: {{ .Values.image.name }}-deployment-experimental
   namespace: stage-org1
   labels:
-    name: {{ .Values.labels.name }}
+    name: {{ .Values.image.name }}
     version: experimental
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.labels.name }}
+      name: {{ .Values.image.name }}
       version: experimental
   template:
     metadata:
       labels:
-        name: {{ .Values.labels.name }}
+        name: {{ .Values.image.name }}
         version: experimental
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: {{ .Values.image.fullName }}
+          image: {{ .Values.image.experimental }}
           imagePullPolicy: "Always"
           ports:
           - containerPort: 80
@@ -29,26 +29,26 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.image.name }}-deployment-latest
+  name: {{ .Values.image.name }}-deployment-master
   namespace: stage-org1
   labels:
-    name: {{ .Values.labels.name }}
+    name: {{ .Values.image.name }}
     version: master
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.labels.name }}
+      name: {{ .Values.image.name }}
       version: master
   template:
     metadata:
       labels:
-        name: {{ .Values.labels.name }}
+        name: {{ .Values.image.name }}
         version: master
     spec:
       containers:
         - name: {{ .Values.image.name }}
-          image: {{ .Values.image.masterName }}
+          image: {{ .Values.image.master }}
           imagePullPolicy: "Always"
           ports:
           - containerPort: 80

@@ -1,15 +1,9 @@
-image:
-  name: IMAGE-NAME
-  tag: vVERSION
-  mtag: vMASTER
-  fullName: beppev/IMAGE-NAME:VERSION
-  masterName: beppev/IMAGE-NAME:MASTER
-
 weight:
-  master: 100
-  experimental: 0
+  master: 0
+  experimental: 100
 
+image:
+  name: microservice-1
+  master: beppev/IMAGE-NAME:MASTER
+  experimental: beppev/IMAGE-NAME:VERSION
 
-labels:
-  name: IMAGE-NAME
-  version: vVERSION

@@ -5,25 +5,28 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
-	"os"
 )
 
 func main() {
-	http.HandleFunc("/greet", greet)
-	http.HandleFunc("/unstableGreet", unstableGreet)
 	http.HandleFunc("/", doRequest)
 	err:= http.ListenAndServe(":80", nil)
 	if err != nil {
-		os.Exit(1)
+		fmt.Println(err.Error())
 	}
 }
 
 func doRequest(w http.ResponseWriter, r *http.Request) {
-	resp, err := http.Get("http://microservice-2-vservice")
+	fmt.Println("doRequest method called")
+	fmt.Println("currently we have a request from subset: ")
+	subset := r.Header.Get("subset")
+	fmt.Println(subset)
+	w.Header().Set("subset", subset)
+	resp, err := http.Get("http://microservice-2-service")
 	if (err == nil) {
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
 		if (err == nil) {
+			fmt.Println(err.Error())
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		}
 	}
@@ -38,7 +41,6 @@ func greet(w http.ResponseWriter, r *http.Request) {
 
 func unstableGreet(w http.ResponseWriter, r *http.Request) {
 	chance := rand.Intn(100)
-
 	if chance < 75 {
 		fmt.Fprintf(w, "hello world")
 	} else {
