@@ -1,3 +1,3 @@
 # microservice-1
 
-pipeline tagged images verkeerd, dus pushed verkeerde images in totaal. dit moet gefixed worden
+connectie met de virtual service aan het uitzoeken momenteel
