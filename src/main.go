@@ -22,16 +22,19 @@ func doRequest(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(subset)
 	w.Header().Set("subset", subset)
 	resp, err := http.Get("http://microservice-2-service")
-	if (err == nil) {
+	if (err == nil && resp.Body != nil) {
+		fmt.Println("err == nill en body != nil")
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
 		if (err == nil) {
 			fmt.Println(err.Error())
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		} else {
+			fmt.Println("body read error")
 			http.Error(w, err.Error() + " happened, rip", http.StatusInternalServerError)
 		}
 	} else {
+		fmt.Println("err != nil")
 		http.Error(w, err.Error() + " happened, rip", http.StatusInternalServerError)
 	} 
 
