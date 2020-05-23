@@ -1,6 +1,6 @@
 weight:
-  master: 50
-  experimental: 50
+  master: 0
+  experimental: 100
 
 image:
   name: microservice-1

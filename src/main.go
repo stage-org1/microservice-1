@@ -17,6 +17,9 @@ func main() {
 
 func doRequest(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("doRequest method called")
+	subset := r.Header.Get("subset")
+	w.Header().Set("subset", subset)
+	fmt.Println("currently we have a request from subset: " + subset)
 	resp, err := http.Get("http://microservice-2-service")
 	if (err == nil) {
 		defer resp.Body.Close()
