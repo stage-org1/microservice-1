@@ -25,9 +25,11 @@ func doRequest(w http.ResponseWriter, r *http.Request) {
 	if (err == nil && resp.Body != nil) {
 		fmt.Println("err == nill en body != nil")
 		defer resp.Body.Close()
+		fmt.Println("resp body close finished")
 		body, err := ioutil.ReadAll(resp.Body)
+		fmt.Println("readall happened")
 		if (err == nil) {
-			fmt.Println(err.Error())
+			fmt.Println("request was success")
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		} else {
 			fmt.Println("body read error")
