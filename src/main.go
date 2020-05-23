@@ -17,7 +17,7 @@ func main() {
 
 func doRequest(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("doRequest method called")
-	resp, err := http.Get("http://microservice-2-vservice")
+	resp, err := http.Get("http://microservice-2-service")
 	if (err == nil) {
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
