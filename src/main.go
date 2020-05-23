@@ -30,7 +30,7 @@ func doRequest(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		}
 	}
-	http.Error(w, err.Error(), http.StatusInternalServerError)
+	http.Error(w, err.Error() + " happened, rip", http.StatusInternalServerError)
 
 }
 
