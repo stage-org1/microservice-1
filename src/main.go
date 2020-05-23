@@ -5,16 +5,13 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
-	"os"
 )
 
 func main() {
-	http.HandleFunc("/greet", greet)
-	http.HandleFunc("/unstableGreet", unstableGreet)
 	http.HandleFunc("/", doRequest)
 	err:= http.ListenAndServe(":80", nil)
 	if err != nil {
-		os.Exit(1)
+		fmt.Println(err.Error())
 	}
 }
 
@@ -25,6 +22,7 @@ func doRequest(w http.ResponseWriter, r *http.Request) {
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
 		if (err == nil) {
+			fmt.Println(err.Error())
 			fmt.Fprintf(w, "request was a success, "+string(body))
 		}
 	}
