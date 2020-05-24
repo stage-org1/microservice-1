@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"time"
 )
 
 func main() {
@@ -18,10 +17,7 @@ func main() {
 func doRequest(w http.ResponseWriter, r *http.Request) {
 	subset := r.Header.Get("subset")
 	w.Header().Set("subset", subset)
-	client := http.Client{
-		Timeout: 50 * time.Millisecond, // 50 millisecond timeout
-	}
-	resp, err := client.Get("http://microservice-2-service")
+	resp, err := http.Get("http://microservice-2-service")
 	if (err == nil && resp.Body != nil) {
 		defer resp.Body.Close()
 		body, err := ioutil.ReadAll(resp.Body)
