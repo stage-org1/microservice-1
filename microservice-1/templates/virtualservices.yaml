@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ .Values.image.name }}-vservice
+  name: {{ .Values.image.name }}-service
   namespace: stage-org1
 spec:
   hosts:
