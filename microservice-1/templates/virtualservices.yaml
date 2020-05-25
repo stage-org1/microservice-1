@@ -8,6 +8,7 @@ metadata:
 spec:
   hosts:
     - "istio-ingress.llocal.host"
+    - "*"
   gateways:
     - "{{ .Values.image.name }}-gateway"
   http:
