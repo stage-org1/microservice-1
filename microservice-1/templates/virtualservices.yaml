@@ -7,7 +7,6 @@ metadata:
     app: stage-org1
 spec:
   hosts:
-    - "istio-ingress.llocal.host"
     - "*"
   gateways:
     - "{{ .Values.image.name }}-gateway"
