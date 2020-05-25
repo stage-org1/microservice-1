@@ -7,17 +7,20 @@ metadata:
   labels:
     name: {{ .Values.image.name }}
     version: experimental
+    app: stage-org1
 spec:
   replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.image.name }}
       version: experimental
+      app: stage-org1
   template:
     metadata:
       labels:
         name: {{ .Values.image.name }}
         version: experimental
+        app: stage-org1
     spec:
       containers:
         - name: {{ .Values.image.name }}
@@ -34,17 +37,20 @@ metadata:
   labels:
     name: {{ .Values.image.name }}
     version: master
+    app: stage-org1
 spec:
   replicas: 1
   selector:
     matchLabels:
       name: {{ .Values.image.name }}
       version: master
+      app: stage-org1
   template:
     metadata:
       labels:
         name: {{ .Values.image.name }}
         version: master
+        app: stage-org1
     spec:
       containers:
         - name: {{ .Values.image.name }}

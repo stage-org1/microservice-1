@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: {{ .Values.image.name }}-service
   namespace: stage-org1
+  labels:
+    app: stage-org1
 spec:
   selector:
     name: {{ .Values.image.name }}
