@@ -9,7 +9,7 @@ spec:
   hosts:
     - "istio-ingress.llocal.host"
   gateways:
-    - "stage-org1-gateway"
+    - "{{ .Values.image.name }}-gateway"
   http:
     - match:
       - headers:
