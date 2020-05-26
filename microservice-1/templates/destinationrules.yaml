@@ -4,7 +4,7 @@ metadata:
   name: {{ .Values.image.name }}-destination
   namespace: stage-org1
   labels:
-    app: stage-org1
+    app: {{ .Values.image.name }}
 spec:
   host: {{ .Values.image.name }}-service
   subsets:
