@@ -1,6 +1,6 @@
 weight:
-  master: 0
-  experimental: 100
+  master: 50
+  experimental: 50
 
 labels:
   name: microservice-1
