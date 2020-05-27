@@ -2,6 +2,10 @@ weight:
   master: 0
   experimental: 100
 
+labels:
+  name: microservice-1
+  app: stage-org1-app
+
 image:
   name: microservice-1
   master: beppev/IMAGE-NAME:MASTER
