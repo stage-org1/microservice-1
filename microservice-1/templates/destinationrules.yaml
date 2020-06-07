@@ -3,6 +3,8 @@ kind: DestinationRule
 metadata:
   name: {{ .Values.image.name }}-destination
   namespace: stage-org1
+  labels:
+    app: {{ .Values.labels.app }}
 spec:
   host: {{ .Values.image.name }}-service
   subsets:

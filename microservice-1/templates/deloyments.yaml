@@ -5,18 +5,21 @@ metadata:
   name: {{ .Values.image.name }}-deployment-experimental
   namespace: stage-org1
   labels:
-    name: {{ .Values.image.name }}
+    name: {{ .Values.labels.name }}
     version: experimental
+    app: {{ .Values.labels.app }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.image.name }}
+      name: {{ .Values.labels.name }}
+      app: {{ .Values.labels.app }}
       version: experimental
   template:
     metadata:
       labels:
-        name: {{ .Values.image.name }}
+        name: {{ .Values.labels.name }}
+        app: {{ .Values.labels.app }}
         version: experimental
     spec:
       containers:
@@ -32,18 +35,21 @@ metadata:
   name: {{ .Values.image.name }}-deployment-master
   namespace: stage-org1
   labels:
-    name: {{ .Values.image.name }}
+    name: {{ .Values.labels.name }}
+    app: {{ .Values.labels.app }}
     version: master
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: {{ .Values.image.name }}
+      name: {{ .Values.labels.name }}
+      app: {{ .Values.labels.app }}
       version: master
   template:
     metadata:
       labels:
-        name: {{ .Values.image.name }}
+        name: {{ .Values.labels.name }}
+        app: {{ .Values.labels.app }}
         version: master
     spec:
       containers:

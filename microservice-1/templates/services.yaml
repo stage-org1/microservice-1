@@ -4,9 +4,11 @@ kind: Service
 metadata:
   name: {{ .Values.image.name }}-service
   namespace: stage-org1
+  labels:
+    app: {{ .Values.labels.app }}
 spec:
   selector:
-    name: {{ .Values.image.name }}
+    name: {{ .Values.labels.name }}
   ports:
     - protocol: TCP
       port: 80

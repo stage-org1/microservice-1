@@ -1,6 +1,0 @@
-weight:
-  master: 100
-  experimental: 0
-image:
-  master: beppev/microservice-1:v3
-  experimental: beppev/IMAGE-NAME:VERSION
